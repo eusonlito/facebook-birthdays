@@ -73,9 +73,7 @@ class Facebook
 
     public static function getFriends($file = true)
     {
-        $friends = static::getFriendsFromFile();
-
-        if ($file) {
+        if ($file && ($friends = static::getFriendsFromFile())) {
             return $friends;
         }
 
