@@ -1,4 +1,4 @@
-# Send your own Facebook Birthday Whishes using your profile
+# Send your own Facebook Birthday Whishes using your own profile
 
 Now you can automate the Facebook wishes to your friends with this script :)
 
@@ -28,7 +28,7 @@ All folders inside `data/` must have write permissions to launcher user.
 
 ## Launch
 
-Setup a cron like:
+Setup as cron:
 
 ```
 05 10 * * * cd /path/to/facebook-birthdays && php command day-whishes
