@@ -62,7 +62,7 @@ class Facebook
             $friend['id'] = $friend['inputs']['user_id'];
 
             if (isset($friends[$friend['id']])) {
-                $birthdays[$friend['id']] = array_merge($friend, $friends[$friend['id']]);
+                $birthdays[$friend['id']] = array_merge($friends[$friend['id']], $friend);
             } else {
                 $birthdays[$friend['id']] = $friend;
             }
