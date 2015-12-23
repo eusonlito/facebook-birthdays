@@ -25,7 +25,7 @@ class Cache
         }
     }
 
-    public static function set($name, $contents, $expire = 36000)
+    public static function set($name, $contents, $expire = 3600)
     {
         if (!config('cache')) {
             return $contents;
