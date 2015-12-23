@@ -9,7 +9,7 @@ class Facebook
 {
     private static $folder = FB_DATA_PATH.'/friends';
     private static $file = 'list';
-    private static $logged = true;
+    private static $logged;
 
     public static function login()
     {
