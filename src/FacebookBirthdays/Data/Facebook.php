@@ -130,7 +130,7 @@ class Facebook
 
     public static function saveFriends(array $friends)
     {
-        usort($friends, function($a, $b) {
+        usort($friends, function ($a, $b) {
             return ($a['name'] > $b['name']) ? 1 : -1;
         });
 
