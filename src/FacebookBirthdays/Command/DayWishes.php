@@ -6,7 +6,7 @@ use FacebookBirthdays\Data\Phrases;
 use FacebookBirthdays\Log\Logger;
 use FacebookBirthdays\Scrapper\Curl;
 
-class DayWhishes
+class DayWishes
 {
     public function run()
     {
