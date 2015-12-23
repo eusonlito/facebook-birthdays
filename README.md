@@ -24,6 +24,8 @@ Edit this file (if you want) to add `gender` (male / female) and `tags` (array) 
 
 If you want to add your own custom quotes to wishes, copy file `data/phrases/LANGUAGE.php` to new file `data/phrases/LANGUAGE-custom.php` and edit as you want :)
 
+If you want to add the name of the friend to phrase, add a `%s` and will be added.
+
 All folders inside `data/` must have write permissions to launcher user.
 
 ## Launch
