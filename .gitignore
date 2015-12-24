@@ -1,5 +1,5 @@
-/data/cache/*
-/data/friends/*
-/data/logs/*
+/data/cache/
+/data/facebook/
+/data/logs/
 
 *custom.php

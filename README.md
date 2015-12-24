@@ -18,7 +18,7 @@ Once configured, create your friends list:
 $ php command friends-list
 ```
 
-This command will generate a `data/friends/list.php` file.
+This command will generate a `data/facebook/friends.php` file.
 
 Edit this file (if you want) to add `gender` (male / female) and `tags` (array) values.
 

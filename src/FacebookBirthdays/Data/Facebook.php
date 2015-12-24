@@ -7,8 +7,6 @@ use FacebookBirthdays\Scrapper\Curl;
 
 class Facebook
 {
-    private static $folder = FB_DATA_PATH.'/friends';
-    private static $file = 'list';
     private static $logged;
 
     public static function login()
@@ -19,10 +17,10 @@ class Facebook
 
         $inputs = HTML::getFormInputs(Curl::post('/'));
 
-        static::$logged = Curl::post('/login.php', array_merge($inputs, [
+        static::$logged = Curl::post('/login.php', array_merge($inputs, array(
             'email' => config('email'),
             'pass' => config('pass')
-        ]));
+        )));
     }
 
     public static function getTodayBirthdays()
@@ -121,7 +119,7 @@ class Facebook
     {
         $friends = array();
 
-        foreach (File::getArray(static::$folder, static::$file) as $friend) {
+        foreach (File::getArray(static::getFolder(), 'friends') as $friend) {
             $friends[$friend['id']] = $friend;
         }
 
@@ -134,7 +132,7 @@ class Facebook
             return ($a['name'] > $b['name']) ? 1 : -1;
         });
 
-        File::save(static::$folder.'/'.static::$file, $friends, true);
+        File::save(static::getFolder().'/friends', $friends, true);
     }
 
     private static function getFriendModel()
@@ -162,5 +160,10 @@ class Facebook
         preg_match('#'.preg_quote($base, '#').'[^"]+#', $page, $url);
 
         return $url ? str_replace('&amp;', '&', $url[0]) : $base;
+    }
+
+    private static function getFolder()
+    {
+        return FB_DATA_PATH.'/facebook';
     }
 }

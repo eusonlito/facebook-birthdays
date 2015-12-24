@@ -11,7 +11,7 @@ class Curl
     private static $connection;
     private static $logger;
 
-    public static function get($url, array $data = [], $cache = true)
+    public static function get($url, array $data = array(), $cache = true)
     {
         if ($cache && ($cache = Cache::get($url))) {
             return $cache;
@@ -30,7 +30,7 @@ class Curl
         return Cache::set($url, curl_exec(static::$connection));
     }
 
-    public static function post($url, array $data = [])
+    public static function post($url, array $data = array())
     {
         static::connect();
 
@@ -39,7 +39,7 @@ class Curl
 
         static::log('POST', $data);
 
-        $response = static::get($url, [], false);
+        $response = static::get($url, array(), false);
 
         curl_setopt(static::$connection, CURLOPT_POST, false);
 
