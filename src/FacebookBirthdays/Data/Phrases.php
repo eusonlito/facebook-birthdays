@@ -7,7 +7,6 @@ use FacebookBirthdays\Filesystem\File;
 class Phrases
 {
     private static $phrases = array();
-    private static $used = array();
 
     private static function load()
     {
@@ -24,14 +23,18 @@ class Phrases
                 'No phrases available to language %s on folder %s', config('language'), $folder
             ));
         }
+
+        shuffle(static::$phrases);
     }
 
     public static function one(array $friend)
     {
         static::load();
 
-        $phrases = Phrases::filterByKey($friend, array('gender', 'tags'));
-        $phrase = $phrases[array_rand($phrases, 1)]['message'];
+        $key = Phrases::filterByColumn($friend, array('gender', 'tags'))[0];
+        $phrase = static::$phrases[$key]['message'];
+
+        unset(static::$phrases[$key]);
 
         if (!strstr($phrase, '%s')) {
             return $phrase;
@@ -40,33 +43,28 @@ class Phrases
         return sprintf($phrase, explode(' ', $friend['name'])[0]);
     }
 
-    private static function filterByKey($friend, $keys)
+    private static function filterByColumn($friend, $columns)
     {
         $valid = array();
 
-        foreach (static::$phrases as $phrase) {
-            $inKeys = true;
-
-            foreach ($keys as $key) {
-                if (!static::isInKey($friend, $phrase, $key)) {
-                    $inKeys = false;
-                    break;
+        foreach (static::$phrases as $key => $phrase) {
+            foreach ($columns as $column) {
+                if (!static::isInColumn($friend, $phrase, $column)) {
+                    continue 2;
                 }
             }
 
-            if ($inKeys) {
-                $valid[] = $phrase;
-            }
+            $valid[] = $key;
         }
 
         return $valid;
     }
 
-    private static function isInKey($friend, $phrase, $key)
+    private static function isInColumn($friend, $phrase, $column)
     {
-        return empty($friend[$key])
-            || empty($phrase[$key])
-            || (is_array($phrase[$key]) && in_array($friend[$key], $phrase[$key], true))
-            || ($friend[$key] === $phrase[$key]);
+        return empty($friend[$column])
+            || empty($phrase[$column])
+            || (is_array($phrase[$column]) && in_array($friend[$column], $phrase[$column], true))
+            || ($friend[$column] === $phrase[$column]);
     }
 }
