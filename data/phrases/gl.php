@@ -30,7 +30,7 @@
         'tags' => array()
     ),
     array(
-        'message' => 'Menos mal que está Facebook aquí para animarme do día vendo que a xente tamén se fai máis vella :D. Feliz Cumpleanos!!!',
+        'message' => 'Menos mal que está Facebook aquí para animarme o día vendo que a xente tamén se fai máis vella :D. Feliz Cumpleanos!!!',
         'gender' => null,
         'tags' => array()
     ),
