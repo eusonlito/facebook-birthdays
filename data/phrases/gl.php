@@ -125,7 +125,7 @@
         'tags' => array()
     ),
     array(
-        'message' => 'O secreto para manterse xove é vivir hontestamente, comer despacio e mentir sobre a idade :P Feliz Cumpleanos!!',
+        'message' => 'O segredo para manterse xove é vivir honestamente, comer amodo e mentir sobre a idade :P Feliz Cumpleanos!!',
         'gender' => array('female'),
         'tags' => array()
     ),
