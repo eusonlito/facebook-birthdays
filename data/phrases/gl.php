@@ -135,7 +135,7 @@
         'tags' => array()
     ),
     array(
-        'message' => 'Ti mentras a tarta valga máis que as velas, non te preoupes. Moitas felicidades!!!',
+        'message' => 'Ti mentras a tarta valga máis que as velas, non te preocupes. Moitas felicidades!!!',
         'gender' => array('male'),
         'tags' => array()
     ),
